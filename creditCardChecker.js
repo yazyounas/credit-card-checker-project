@@ -45,6 +45,17 @@ const validateCred = arr => {
     let sum = toSum.reduce((accumelator, currentvalue) => accumelator + currentvalue, 0);
     return sum % 10 === 0;
   }
-  console.log(validateCred([4, 5, 3, 2, 7, 7, 8, 7, 7, 1, 0, 9, 1, 7, 9, 5]));
+  //console.log(validateCred([4, 5, 3, 2, 7, 7, 8, 7, 7, 1, 0, 9, 1, 7, 9, 5]));
+  //function to re turn Invalid Card Numbers from the batch
+  const findInvalidCards = invalidNumbers => {
+    let invalidCards = [];
+    for (let i = 0; i < invalidNumbers.length; i++) {
+      if(validateCred(invalidNumbers[i]) === false) {
+        invalidCards.push(invalidNumbers[i]);
+      }
+    }
+    return invalidCards;
+  }
   
+  console.log(findInvalidCards(batch));
   
