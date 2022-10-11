@@ -22,3 +22,29 @@ const mystery5 = [4, 9, 1, 3, 5, 4, 0, 4, 6, 3, 0, 7, 2, 5, 2, 3];
 // An array of all the arrays above
 const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, invalid3, invalid4, invalid5, mystery1,
      mystery2, mystery3, mystery4, mystery5];
+
+     //Function to check the validation of the card
+
+     // Add your functions below:
+const validateCred = arr => {
+    let toSum = [];
+    let reversedArry = arr.reverse();
+    for (let i = 0; i < reversedArry.length; i++){
+      if(i === 0) {
+        toSum.push(reversedArry[i]);
+      } else if (i % 2 !== 0) {
+       let number = reversedArry[i] * 2
+       if(number > 9) {
+         number -= 9;
+       }
+       toSum.push(number)
+      } else {
+        toSum.push(reversedArry[i]);
+      }
+    }
+    let sum = toSum.reduce((accumelator, currentvalue) => accumelator + currentvalue, 0);
+    return sum % 10 === 0;
+  }
+  console.log(validateCred([4, 5, 3, 2, 7, 7, 8, 7, 7, 1, 0, 9, 1, 7, 9, 5]));
+  
+  
