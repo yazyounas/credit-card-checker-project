@@ -39,6 +39,7 @@ const validateCred = arr => {
        let number = reversedArry[i] * 2
        if(number > 9) {
          number -= 9;
+
        }
        toSum.push(number)
       } else {
@@ -59,6 +60,32 @@ const validateCred = arr => {
     }
     return invalidCards;
   }
+// return function with the name of the credit card provider by iterating through array 
+  const idInvalidCardCompanies = invalidCards => {
+  
+    let cardCompany = []; // Stores CC companies with invalid card numbers
+   for (let i = 0; i < invalidCards.length; i++) {
+     let firstNumber = parseInt(invalidCards[i][0]);
+      if(firstNumber === 3) {
+        cardCompany.push('Amex');
+      } else if(firstNumber === 4) {
+        cardCompany.push('Visa');
+      } else if(firstNumber === 5) {
+        cardCompany.push('Mastercard');
+      } else if(firstNumber === 6) {
+        cardCompany.push('Discover');
+      } else {
+        cardCompany.push('Company not found')
+      }
+     
+  
+      
+    }
+    let uniq = [...new Set(cardCompany)];
+    
+    return uniq;
+  }
+  console.log(idInvalidCardCompanies(batch));
   
   console.log(findInvalidCards(batch));
   
